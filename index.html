@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muat Naik Gambar ke Cloudinary</title>
+    <title>Muat Naik Gambar ke GitHub Pages</title>
     <style>
         body { font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f0f2f5; margin: 0; }
         .container { background-color: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); text-align: center; width: 90%; max-width: 450px; }
@@ -24,7 +24,7 @@
 <body>
 
     <div class="container">
-        <h2>Muat Naik ke GitHub Pages & Cloudinary</h2>
+        <h2>Sistem Muat Naik Gambar</h2>
         <form id="uploadForm" class="upload-form">
             <label for="gambar" class="file-input">
                 <span class="file-label" id="file-name">Klik untuk pilih gambar...</span>
@@ -37,7 +37,7 @@
     </div>
 
     <script>
-        // GANTIKAN DENGAN MAKLUMAT ANDA
+        // Maklumat anda telah dimasukkan di sini
         const CLOUD_NAME = "dolgjjzuh";
         const UPLOAD_PRESET = "aizatsofian";
         const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`;
@@ -54,7 +54,7 @@
         });
 
         form.addEventListener('submit', function(event) {
-            event.preventDefault(); // Halang borang dari submit cara biasa
+            event.preventDefault(); 
 
             const file = fileInput.files[0];
             if (!file) {
@@ -63,7 +63,6 @@
                 return;
             }
 
-            // Mula proses muat naik
             submitBtn.disabled = true;
             submitBtn.textContent = 'Memuat naik...';
             statusDiv.textContent = '';
@@ -82,14 +81,12 @@
                 if (data.secure_url) {
                     statusDiv.textContent = 'Gambar berjaya dimuat naik!';
                     statusDiv.style.color = 'green';
-
-                    // Paparkan gambar yang telah dimuat naik
+                    
                     const img = document.createElement('img');
                     img.src = data.secure_url;
                     img.id = 'uploaded-image';
                     imageWrapper.appendChild(img);
 
-                    console.log('URL Gambar:', data.secure_url);
                 } else {
                     throw new Error(data.error.message || 'Ralat tidak diketahui dari Cloudinary');
                 }
@@ -97,13 +94,11 @@
             .catch(error => {
                 statusDiv.textContent = `Gagal memuat naik: ${error.message}`;
                 statusDiv.style.color = 'red';
-                console.error('Error:', error);
             })
             .finally(() => {
-                // Kembalikan butang ke keadaan asal
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Muat Naik';
-                form.reset(); // Kosongkan borang
+                form.reset(); 
                 fileNameLabel.textContent = 'Klik untuk pilih gambar...';
             });
         });
