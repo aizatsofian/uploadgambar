@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muat Naik Gambar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f2f5;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .upload-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .file-input {
+            border: 2px dashed #ddd;
+            padding: 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+        .file-input:hover {
+            border-color: #007bff;
+        }
+        input[type="file"] {
+            display: none;
+        }
+        .file-label {
+            color: #555;
+        }
+        .submit-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Sistem Muat Naik Gambar</h2>
+        <form id="uploadForm" class="upload-form" action="/upload" method="post" enctype="multipart/form-data">
+            
+            <label for="gambar" class="file-input">
+                <span class="file-label" id="file-name">Klik untuk pilih gambar...</span>
+                <input type="file" name="gambar" id="gambar" accept="image/*" required>
+            </label>
+            
+            <button type="submit" class="submit-btn">Muat Naik & Hantar</button>
+        </form>
+    </div>
+
+    <script>
+        // Skrip ringkas untuk memaparkan nama fail yang dipilih
+        document.getElementById('gambar').addEventListener('change', function() {
+            var fileName = this.files[0] ? this.files[0].name : "Klik untuk pilih gambar...";
+            document.getElementById('file-name').textContent = fileName;
+        });
+    </script>
+
+</body>
+</html>
